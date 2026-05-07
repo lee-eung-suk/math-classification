@@ -40,7 +40,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen w-screen bg-[var(--color-bg)] font-sans selection:bg-blue-200 overflow-hidden">
+    <div className="min-h-[100dvh] w-full bg-[var(--color-bg)] font-sans selection:bg-blue-200 overflow-x-hidden">
       {gameState === 'start' && <StartScreen onStart={handleStart} />}
       {gameState === 'playing' && (
         <GameScreen 
