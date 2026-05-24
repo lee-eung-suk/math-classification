@@ -137,6 +137,8 @@ export const useGameStore = () => {
     isFinished,
     setSoundEnabled,
     setIsFinished,
+    setBins,
+    setUnclassifiedIds,
     initGame,
     moveCharacter,
     renameBin,

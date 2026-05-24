@@ -94,13 +94,13 @@ export const StartScreen: React.FC<Props> = ({ onStart }) => {
 
   return (
     <div 
-      className="w-full min-h-[100dvh] bg-[var(--color-bg)] flex flex-col relative overflow-x-hidden"
-      style={{ paddingInline: 'clamp(16px, 5vw, 80px)', paddingBottom: '48px', paddingTop: 'clamp(24px, 5vh, 72px)' }}
+      className="w-full h-[100dvh] bg-[var(--color-bg)] flex flex-col relative overflow-x-hidden"
+      style={{ paddingInline: 'clamp(16px, 5vw, 80px)', paddingBottom: '24px', paddingTop: 'clamp(16px, 3vh, 32px)' }}
     >
-      <div className="w-full max-w-[1280px] mx-auto flex flex-col flex-1">
+      <div className="w-full max-w-[1280px] mx-auto flex flex-col flex-1 min-h-0">
         
         {/* Header Region */}
-        <header className="w-full flex flex-col-reverse md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-16">
+        <header className="w-full flex flex-col-reverse md:flex-row md:items-start md:justify-between gap-4 mb-4 md:mb-6 shrink-0">
           <div className="hidden md:block w-[120px]" /> {/* Spacer for centering title on PC */}
           
           {/* Title Area */}
@@ -109,18 +109,18 @@ export const StartScreen: React.FC<Props> = ({ onStart }) => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
-              className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-[#5E81F4]/10 rounded-[1.2rem] md:rounded-[1.5rem] mb-4 md:mb-6"
+              className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#5E81F4]/10 rounded-[1.2rem] md:rounded-[1.5rem] mb-3 md:mb-4"
             >
               <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-[#5E81F4]" />
             </motion.div>
             <h1 
-              className="font-bold text-[#1D1D1F] mb-3 md:mb-4 tracking-tight" 
-              style={{ fontSize: 'clamp(32px, 6vw, 64px)', lineHeight: '1.15', wordBreak: 'keep-all' }}
+              className="font-bold text-[#1D1D1F] mb-1 md:mb-2 tracking-tight" 
+              style={{ fontSize: 'clamp(28px, 5vw, 56px)', lineHeight: '1.15', wordBreak: 'keep-all' }}
             >
               분류 탐험대
             </h1>
             <p 
-              className="text-base md:text-xl text-[#6E6E73] font-medium max-w-md mx-auto" 
+              className="text-sm md:text-lg text-[#6E6E73] font-medium max-w-md mx-auto" 
               style={{ wordBreak: 'keep-all' }}
             >
               친구들과 함께 즐겁게 모양과 특징을 나누어 볼까요?
@@ -133,17 +133,17 @@ export const StartScreen: React.FC<Props> = ({ onStart }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => { playPop(); toggleFullscreen(); }}
-              className="w-11 h-11 md:w-14 md:h-14 glass-panel rounded-full text-[#6E6E73] hover:text-[#1D1D1F] flex items-center justify-center transition-colors shrink-0"
+              className="w-11 h-11 md:w-12 md:h-12 glass-panel rounded-full text-[#6E6E73] hover:text-[#1D1D1F] flex items-center justify-center transition-colors shrink-0"
             >
-              <Maximize size={20} className="md:w-6 md:h-6" />
+              <Maximize size={20} className="md:w-5 md:h-5" />
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => { playPop(); setShowSettings(true); }}
-              className="w-11 h-11 md:w-14 md:h-14 glass-panel rounded-full text-[#6E6E73] hover:text-[#1D1D1F] flex items-center justify-center transition-colors shrink-0"
+              className="w-11 h-11 md:w-12 md:h-12 glass-panel rounded-full text-[#6E6E73] hover:text-[#1D1D1F] flex items-center justify-center transition-colors shrink-0"
             >
-              <Settings size={20} className="md:w-6 md:h-6" />
+              <Settings size={20} className="md:w-5 md:h-5" />
             </motion.button>
           </div>
         </header>
@@ -153,55 +153,43 @@ export const StartScreen: React.FC<Props> = ({ onStart }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="w-full max-w-5xl mx-auto flex flex-col gap-8 md:gap-12"
+          className="w-full max-w-5xl mx-auto flex flex-col gap-4 lg:gap-6 flex-1 min-h-0 justify-center"
         >
-          {/* Card Selection */}
-          <div className="glass-panel p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              <MotionCard 
-                icon={<BookOpen className="w-8 h-8 text-[#5E81F4]" />}
-                title="자유 분류하기"
-                desc="내가 정한 기준으로 나누어요"
-                onClick={() => handleModeClick('student', 2)}
-                delay={0.2}
-              />
-              <MotionCard 
-                icon={<Users className="w-8 h-8 text-[#A7F3D0]" />}
-                title="짝꿍과 함께"
-                desc="서로의 분류 기준을 맞혀봐요"
-                onClick={() => handleModeClick('pair', 2)}
-                delay={0.3}
-              />
-              <MotionCard 
-                icon={<Sparkles className="w-8 h-8 text-[#AECBFA]" />}
-                title="3칸으로 나누기"
-                desc="조금 더 넓은 바구니로 나누어요"
-                onClick={() => handleModeClick('teacher', 3)}
-                delay={0.4}
-              />
-              <MotionCard 
-                icon={<Search className="w-8 h-8 text-[#FCA5A5]" />}
-                title="비밀 기준 맞히기"
-                desc="놀이를 통해 숨겨진 기준을 찾아내요"
-                onClick={() => handleModeClick('guess', 2)}
-                delay={0.5}
-              />
-            </div>
+          {/* Main Action */}
+          <div className="w-full flex justify-center shrink-0">
+            <motion.button 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => handleModeClick('student', 2)}
+              className="group w-full max-w-2xl px-6 py-4 md:px-6 md:py-5 bg-[#5E81F4] hover:bg-[#4d6fd9] rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-[#5E81F4]/20 flex items-center justify-center gap-4 md:gap-5 transition-colors"
+            >
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-[1.2rem] bg-white/20 flex items-center justify-center shrink-0">
+                <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              </div>
+              <div className="text-left flex-1">
+                <h3 className="text-lg md:text-2xl font-bold text-white mb-1 leading-tight" style={{ wordBreak: 'keep-all' }}>
+                  분류 놀이 시작하기
+                </h3>
+                <p className="text-white/80 font-medium text-xs md:text-base leading-snug" style={{ wordBreak: 'keep-all' }}>
+                  자유롭게 기준을 정해 캐릭터들을 나누어 보아요
+                </p>
+              </div>
+            </motion.button>
           </div>
 
           {/* Info Section / Guide */}
-          <div className="glass-panel p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] w-full">
-            <div className="flex items-center justify-center gap-3 mb-6 md:mb-8">
-              <div className="w-8 h-8 bg-[#5E81F4]/10 rounded-lg flex items-center justify-center shrink-0">
-                <Search className="w-4 h-4 text-[#5E81F4]" />
+          <div className="glass-panel p-4 md:p-5 lg:p-6 rounded-[2rem] md:rounded-[2.5rem] w-full shrink-0 flex flex-col justify-center min-h-[160px]">
+            <div className="flex items-center justify-center gap-2 mb-3 md:mb-4 shrink-0">
+              <div className="w-6 h-6 md:w-8 md:h-8 bg-[#5E81F4]/10 rounded-lg flex items-center justify-center shrink-0">
+                <Search className="w-3 h-3 md:w-4 md:h-4 text-[#5E81F4]" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-[#1D1D1F]" style={{ wordBreak: 'keep-all' }}>어떤 특징을 관찰할까요?</h3>
+              <h3 className="text-base md:text-lg font-bold text-[#1D1D1F]" style={{ wordBreak: 'keep-all' }}>어떤 특징을 관찰할까요?</h3>
             </div>
             
             {/* Guide Items: Horizontal Scroll on Mobile, Grid on MD+ */}
-            <div className="flex overflow-x-auto pb-6 -mx-2 px-2 snap-x snap-mandatory gap-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:snap-none md:p-0 md:m-0 scrollbar-hide">
+            <div className="flex overflow-x-auto pb-4 md:pb-0 -mx-2 px-2 snap-x snap-mandatory gap-2 md:grid md:grid-cols-3 lg:grid-cols-6 md:gap-3 md:overflow-visible md:snap-none md:p-0 md:m-0 scrollbar-hide shrink-0">
               {guideItems.map((item, idx) => (
-                <div key={idx} className="snap-center shrink-0 w-[260px] md:w-auto h-full flex">
+                <div key={idx} className="snap-center shrink-0 w-[240px] md:w-auto h-[80px] md:h-[96px] flex">
                   <GuideItem 
                     label={item.label} 
                     desc={item.desc}
@@ -353,26 +341,6 @@ export const StartScreen: React.FC<Props> = ({ onStart }) => {
   );
 };
 
-const MotionCard = ({ icon, title, desc, onClick, delay }: { icon: React.ReactNode, title: string, desc: string, onClick: () => void, delay: number }) => (
-  <motion.button 
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ type: 'spring', stiffness: 300, damping: 25, delay }}
-    whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.95)" }}
-    whileTap={{ scale: 0.98 }}
-    onClick={onClick}
-    className="group flex items-center p-6 bg-white/70 rounded-[2rem] border border-white/50 transition-colors text-left shadow-sm"
-  >
-    <div className="w-16 h-16 rounded-[1.2rem] bg-black/5 flex items-center justify-center shrink-0 mr-5 group-hover:bg-white transition-colors shadow-sm">
-      {icon}
-    </div>
-    <div>
-      <h3 className="text-xl font-bold text-[#1D1D1F] mb-1 leading-tight" style={{ wordBreak: 'keep-all' }}>{title}</h3>
-      <p className="text-sm text-[#6E6E73] font-medium leading-snug" style={{ wordBreak: 'keep-all' }}>{desc}</p>
-    </div>
-  </motion.button>
-);
-
 interface GuideItemProps {
   label: string; 
   desc: string; 
@@ -392,23 +360,22 @@ const GuideItem: React.FC<GuideItemProps> = ({
     whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.9)' }}
     whileTap={{ scale: 0.95 }}
     onClick={onClick}
-    className="w-full h-full bg-white/60 p-4 rounded-2xl border border-white flex flex-col items-center gap-2 shadow-sm text-center"
+    className="w-full h-full bg-white/60 p-3 rounded-[1rem] border border-white flex flex-col items-center justify-center gap-1 shadow-sm text-center"
   >
-    <div className="h-14 flex items-center justify-center gap-1 mb-1">
+    <div className="flex items-center justify-center gap-1">
       {chars && chars.map((c, i) => (
-        <div key={c.id} className={`${chars.length > 1 ? 'scale-75 -mx-2' : ''}`}>
-          <Character attributes={c} size={48} />
+        <div key={c.id} className={`${chars.length > 1 ? 'scale-75 -mx-2' : 'scale-90'}`}>
+          <Character attributes={c} size={40} />
         </div>
       ))}
       {colors && (
         <div className="flex gap-1">
           {colors.map((col, i) => (
-            <div key={i} className="w-5 h-5 rounded-full border border-black/5" style={{ backgroundColor: col }} />
+            <div key={i} className="w-4 h-4 rounded-full border border-black/5" style={{ backgroundColor: col }} />
           ))}
         </div>
       )}
     </div>
-    <span className="text-sm font-bold text-[#1D1D1F] tracking-tight whitespace-nowrap">{label}</span>
-    <span className="text-[10px] font-medium text-[#B2B2B2] whitespace-nowrap overflow-hidden text-ellipsis w-full">열어보기</span>
+    <span className="text-xs md:text-sm font-bold text-[#1D1D1F] tracking-tight whitespace-nowrap">{label}</span>
   </motion.button>
 );

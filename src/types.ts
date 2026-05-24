@@ -2,7 +2,7 @@ export type CharacterType = 'human' | 'animal' | 'robot';
 export type ColorType = 'red' | 'blue' | 'green' | 'yellow';
 export type ExpressionType = 'smile' | 'sad' | 'surprise' | 'wink';
 export type Difficulty = 'easy' | 'normal' | 'hard';
-export type GameMode = 'teacher' | 'student' | 'pair' | 'guess' | 'open';
+export type GameMode = 'student' | 'pair' | 'guess' | 'open';
 export type BinCount = 2 | 3;
 
 export interface CharacterAttributes {

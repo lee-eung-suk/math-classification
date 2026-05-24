@@ -119,17 +119,6 @@ export const GameScreen: React.FC<Props> = ({ store, onFinish, onHome }) => {
              <h2 className="text-xl md:text-2xl font-bold text-[#1D1D1F] tracking-tight ml-1">분류 탐험대</h2>
           </div>
           <div className="glass-panel rounded-full p-1.5 flex items-center gap-1 shadow-sm pointer-events-auto">
-            {mode === 'teacher' && (
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => { e.stopPropagation(); playTone('pop'); autoClassify(); }}
-                className="w-10 h-10 rounded-full hover:bg-black/5 text-[#5E81F4] flex items-center justify-center transition-colors"
-                title="빠른 분류"
-              >
-                <Wand2 size={20} />
-              </motion.button>
-            )}
 
             <motion.button 
               whileHover={{ scale: 1.05 }}

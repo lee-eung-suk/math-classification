@@ -38,11 +38,12 @@ export const DroppableBin: React.FC<Props> = ({ id, name, count, criteria, isSel
       animate={{ 
         scale: isOver ? 1.01 : 1,
         borderColor: (isOver || isSelected) ? 'rgba(94, 129, 244, 0.4)' : 'rgba(255, 255, 255, 0.6)',
-        backgroundColor: (isOver || isSelected) ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.72)'
+        backgroundColor: (isOver || isSelected) ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.72)',
+        opacity: 1
       }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
-      className={`glass-panel rounded-[2.5rem] p-5 lg:p-8 flex flex-col flex-1 transition-shadow cursor-pointer relative overflow-hidden h-full group
-        ${(isOver || isSelected) ? 'shadow-[0_0_0_2px_rgba(94,129,244,0.15)] ring-2 ring-[#5E81F4]/20' : 'hover:bg-white/80'}`}
+      className={`glass-panel rounded-[2.5rem] p-5 lg:p-8 flex flex-col flex-1 transition-shadow relative overflow-hidden h-full group
+        ${(isOver || isSelected) ? 'shadow-[0_0_0_2px_rgba(94,129,244,0.15)] ring-2 ring-[#5E81F4]/20' : 'hover:bg-white/80 cursor-pointer'}`}
     >
       <div className="flex flex-col items-center mb-6 z-10 relative">
         {isEditing ? (
@@ -60,10 +61,10 @@ export const DroppableBin: React.FC<Props> = ({ id, name, count, criteria, isSel
           </div>
         ) : (
           <div className="flex items-center gap-2 group/edit" onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>
-            <h3 className="text-xl md:text-2xl font-bold text-[#1D1D1F] group-hover/edit:text-[#5E81F4] transition-colors select-none tracking-tight">
+            <h3 className={`text-xl md:text-2xl font-bold text-[#1D1D1F] group-hover/edit:text-[#5E81F4] transition-colors select-none tracking-tight`}>
               {name}
             </h3>
-            <span className="bg-black/5 text-[#6E6E73] rounded-full w-8 h-8 flex items-center justify-center font-semibold text-sm group-hover/edit:bg-[#5E81F4]/10 group-hover/edit:text-[#5E81F4] transition-colors">
+            <span className={`bg-black/5 text-[#6E6E73] rounded-full w-8 h-8 flex items-center justify-center font-semibold text-sm group-hover/edit:bg-[#5E81F4]/10 group-hover/edit:text-[#5E81F4] transition-colors`}>
               {count}
             </span>
             <div className="opacity-0 group-hover/edit:opacity-100 text-[#6E6E73] hover:text-[#5E81F4] transition-opacity p-1 ml-1 cursor-pointer">
